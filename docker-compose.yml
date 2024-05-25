@@ -5,11 +5,14 @@ services:
     volumes:
       - '/etc/alist:/opt/alist/data'
     ports:
-      - '5244:5244'
+      - 5244:5244 #alist运行端口
+      - 4324:4324 #种子上传端口
+      - 4324:4324/udp #种子上传端口
+      - 6800:6800 #aria2 rpc端口
     environment:
       - PUID=0
       - PGID=0
       - UMASK=022
       - TZ=UTC
     container_name: alist
-    image: 'xhofe/alist-aria2:latest'
+    image: 'metaforget/alist-aria2:latest'
